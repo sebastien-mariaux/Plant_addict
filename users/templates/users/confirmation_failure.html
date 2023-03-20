@@ -1,0 +1,13 @@
+{% extends "layouts/simple.html" %}
+{% load i18n %}
+
+{% block title %}
+  {% trans 'Account confirmed' %}
+{% endblock title %}
+
+{% block content %}
+<h1>
+  {% trans 'Registration failed' %}
+</h1>
+<p>{% trans 'Invalid activation link. Please contact an administrator' %}</p>
+{% endblock content %}

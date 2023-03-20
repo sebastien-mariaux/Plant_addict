@@ -1,0 +1,26 @@
+{% extends "layouts/simple.html" %}
+{% load i18n  %}
+{% load sass_tags %}
+
+{% block extra_head %}
+  {{ block.super }}
+  <link href="{% sass_src 'small-page.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock extra_head %}
+
+{% block title %}
+   {% trans 'Login' %}
+{% endblock title %}
+
+{% block content %}
+<div class="small-page">
+  <h1>{% trans 'Login' %}</h1>
+
+  {% include "partials/form.html" with action="Login" %}
+
+  <p>
+    <a href="{% url 'reset_password' %}">
+      <i>{% trans 'Password forgotten' %}</i>
+    </a>
+  </p>
+</div>
+{% endblock content %}

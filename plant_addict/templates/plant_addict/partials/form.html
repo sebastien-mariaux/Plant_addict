@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load sass_tags %}
+
+{% block extra_head %}
+  <link href="{% sass_src 'partials/form.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock extra_head %}
+
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+
+  {% for field in form %}
+    <div class='form-field'>
+      <label class="my-custom-style" for="{{ field.auto_id }}">{{ field.label }}</label>
+      <div class="{% if field.errors %}error{% endif %}">{{ field }}</div>
+      {% comment %} {% if field.help_text %}
+      <p class="help">{{ field.help_text|safe }}</p>
+      {% endif %} {% endcomment %}
+      {{ field.errors }}
+    </div>
+{% endfor %}
+
+
+
+  <input type="submit" value="{{ action }}" id="submit" class="btn btn-primary">
+</form>

@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.messages {
+  position: absolute;
+  bottom: 20px;
+  width: 500px;
+  left: calc(50% - 250px);
+  text-align: center;
+  padding: 1rem;
+  background-color: darkseagreen;
+  border-radius: 5px;
+  border: 2px solid green;
+  color: #124e0f;
+
+  opacity: 1;
+    -webkit-transition: opacity 1000ms linear;
+    transition: opacity 1000ms linear;
+}
+
+.hidden {
+  display: none;
+}

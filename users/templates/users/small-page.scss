@@ -1,0 +1,20 @@
+.small-page{
+    width: 50%;
+    max-width: 350px;
+    margin: 25px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    h1 {
+      margin-top: 0;
+    }
+
+
+}
+
+.form-field {
+  input {
+    width: 100%;
+  }
+}

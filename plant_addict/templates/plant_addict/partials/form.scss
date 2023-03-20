@@ -1,0 +1,19 @@
+.form-field {
+  margin-bottom: 1.5rem;
+
+}
+
+.errorlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #b30404;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.error {
+  input {
+    border-color: #b30404;
+  }
+}
