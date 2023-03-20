@@ -46,16 +46,6 @@ def write_to_database(file: str):
         for index, row in enumerate(csv_reader):
             handle_row(index, row, header_index)
 
-        # line_count = 0
-        # for row in csv_reader:
-        #     if line_count == 0:
-        #         print(f'Column names are {", ".join(row)}')
-        #         line_count += 1
-        #     else:
-        #         print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
-        #         line_count += 1
-        # print(f'Processed {line_count} lines.')
-
 
 def handle_row(index: int, row: list, header_index: dict):
     if row[header_index['verbatimTaxonRank']] != 'species':
