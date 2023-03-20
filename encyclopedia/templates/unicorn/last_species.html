@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<div>
+  <div class='h1-button'>
+    <h1>{% trans 'Last species' %}</h1>
+      <input type="text" unicorn:model="search" placeholder="Search..." />
+      <button unicorn:click="reset">Reset</button>
+    </h1>
+  </div>
+  {% if species %}
+  <div class='cards'>
+    {% for specie in species %}
+      {% include 'partials/specie.html' with specie=specie %}
+    {% endfor %}
+  </div>
+  {% else %}
+  No specie found...
+  {% endif %}
+</div>

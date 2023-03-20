@@ -1,0 +1,25 @@
+{% extends 'simple.html' %}
+{% load unicorn %}
+{% load sass_tags %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block extra_head %}
+  {{ block.super }}
+  <link href="{% sass_src 'css/specie.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+<div>
+
+  {% comment %} {% block sider_menu %}
+    {% include 'partials/sider_menu.html' %}
+  {% endblock sider_menu %} {% endcomment %}
+
+{% block content %}
+  {% unicorn 'last_species' %}
+  {% unicorn 'last_genii' %}
+  {% unicorn 'last_families' %}
+{% endblock %}
+</div>

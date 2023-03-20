@@ -1,0 +1,19 @@
+{% load i18n %}
+
+
+<div>
+  <div class='h1-button'>
+    <h1>{% trans 'Last genii' %}</h1>
+    <input type="text" unicorn:model="search" placeholder="Search..." />
+    <button unicorn:click="reset">Reset</button>
+  </div>
+  {% if genii %}
+    <div class='cards'>
+      {% for genus in genii %}
+      {% include 'partials/genus.html' with genus=genus %}
+      {% endfor %}
+    </div>
+    {% else %}
+  No genus found...
+  {% endif %}
+  </div>

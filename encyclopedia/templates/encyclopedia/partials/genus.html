@@ -1,0 +1,15 @@
+
+{% load i18n %}
+
+<div class="card">
+  <div class='card-header'>
+    {{ genus.name }}
+  </div>
+  <div class="card-subheader">
+    <div><span class='card-label'>{% trans 'Created:' %} </span> {{ genus.created_at|date:'Y-m-d H:i' }}</div>
+    <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ genus.updated_at|date:'Y-m-d H:i' }}</div>
+  </div>
+
+  <hr />
+  <div><span class='card-label'>{% trans 'Family:' %} </span> {{ genus.family.name }}</div>
+</div>

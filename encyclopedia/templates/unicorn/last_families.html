@@ -1,0 +1,19 @@
+{% load i18n %}
+
+
+<div>
+  <div class='h1-button'>
+  <h1>{% trans 'Last families' %}</h1>
+  <input type="text" unicorn:model="search" placeholder="Search..." />
+  <button unicorn:click="reset">Reset</button>
+  </div>
+  {% if families %}
+  <div class='cards'>
+    {% for family in families %}
+      {% include 'partials/family.html' with family=family %}
+    {% endfor %}
+  </div>
+  {% else %}
+  No family found...
+  {% endif %}
+</div>

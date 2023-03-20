@@ -1,5 +1,5 @@
 {% load static i18n  %}
-{% load sass_tags %}
+{% load sass_tags unicorn %}
 
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@
     <title>
       {{ SITE_TITLE }} | {% block title %}{% endblock title %}
     </title>
+    {% unicorn_scripts %}
     {% block extra_head %}
     {% endblock extra_head %}
   </head>

@@ -31,7 +31,18 @@
     {% endif %}
   {% endblock message %}
 
-  {% block content %}
-  {% endblock content %}
+  <div class='sider-content-layout'>
+    <div class='sider-layout'>
+    {% block sider_menu %}
+      {% include 'partials/sider_menu.html' %}
+    {% endblock sider_menu %}
+    </div>
+
+    <div class='content-layout'>
+    {% block content %}
+    {% endblock content %}
+    </div>
+  </div>
+
 </div>
 {% endblock layout %}

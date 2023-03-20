@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_unicorn',
     'sass_processor',
     'users',
     'encyclopedia',
@@ -80,6 +81,8 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'plant_addict', 'templates', 'plant_addict', 'layouts'),
             os.path.join(BASE_DIR, "plant_addict", "templates"),
             os.path.join(BASE_DIR, "users", "templates", "users"),
+            os.path.join(BASE_DIR, "encyclopedia", "templates", "encyclopedia"),
+            os.path.join(BASE_DIR, "encyclopedia", "templates", "unicorn"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -147,7 +150,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "plant_addict", 'static', 'plant_addict'),
     os.path.join(BASE_DIR, "plant_addict", "templates", "plant_addict"),
-    os.path.join(BASE_DIR, "users", "templates", "users")
+    os.path.join(BASE_DIR, "users", "templates", "users"),
+    os.path.join(BASE_DIR, "encyclopedia", "static", "encyclopedia"),
 ]
 
 # Default primary key field type
