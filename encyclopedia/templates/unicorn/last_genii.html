@@ -3,7 +3,7 @@
 
 <div>
   <div class='h1-button'>
-    <h1>{% trans 'Last genii' %}</h1>
+    <h1>{% trans 'Last genii' %} <span class='sidenote'>({{genii_count}})</span></h1>
     <input type="text" unicorn:model="search" placeholder="Search..." />
     <button unicorn:click="reset">Reset</button>
   </div>
