@@ -5,7 +5,7 @@
 ## Installation
 
 - Clone repository
-- Install requirements (TODO)
+- Install requirements `pip install -r requirements.txt`
 - `./manage.py runserver`
 
 ## Import plants data
