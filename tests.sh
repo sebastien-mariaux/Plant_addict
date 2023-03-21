@@ -7,6 +7,9 @@ coverage report
 coverage html
 
 
+echo 'RUN AUTOPEP8...'
+autopep8 $(git ls-files '**.py') --in-place --aggressive
+
 echo 'RUN PYCODESTYLE...'
 pycodestyle plant_addict
 pycodestyle users

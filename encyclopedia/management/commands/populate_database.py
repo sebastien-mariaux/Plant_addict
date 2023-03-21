@@ -2,7 +2,7 @@ import sys
 import os
 import csv
 import json
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db.utils import IntegrityError
 from encyclopedia.models import PlantOrder, PlantClass, Family, Specie, Genus, Branch
 
@@ -40,7 +40,7 @@ def handle_file(file: str):
 def write_to_database(file: str):
     with open(file, encoding='latin-1') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter='\t')
-        header = csv_reader.__next__()
+        header = next(csv_reader)
         header_index = {header[i]: i for i in range(len(header))}
         sys.stdout.write(json.dumps(header_index))
         for index, row in enumerate(csv_reader):
@@ -62,7 +62,7 @@ def handle_row(index: int, row: list, header_index: dict):
     family = Family.objects.get_or_create(name=family_name)[0]
 
     # classification error in datasource
-    if genus_name in correction_mapping.keys():
+    if genus_name in correction_mapping:
         family = Family.objects.get_or_create(name=correction_mapping[genus_name])[0]
 
     try:

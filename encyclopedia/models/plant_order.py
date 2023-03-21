@@ -19,7 +19,7 @@ class PlantOrder(DatedModel):
     )
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     class Meta:
         verbose_name = _('order')

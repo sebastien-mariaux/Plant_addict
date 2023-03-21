@@ -7,12 +7,11 @@ class FamiliesIndexView(UnicornIndexView):
     family_name = ''
 
     def get_queryset(self):
-        qs = Genus.objects.all()
+        queryset = Genus.objects.all()
         if self.family_name:
-            qs = qs.filter(family__name__startswith=self.family_name)
-        return qs
+            queryset = queryset.filter(family__name__startswith=self.family_name)
+        return queryset
 
     def reset(self):
-        self.genus_name = ''
         self.family_name = ''
         super().reset()

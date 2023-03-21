@@ -9,14 +9,14 @@ UserModel = get_user_model()
 
 def user_from_token(token) -> Optional[EmailUser]:
     if body := decode_token(token):
-        return token_user(body)     # type: ignore
+        return token_user(body)
     return None
 
 
 def decode_token(token: str) -> Optional[dict]:
     try:
         return jwt.decode(token, settings.SECRET_KEY,
-                          algorithms="HS256")  # type: ignore
+                          algorithms=["HS256"])
     except jwt.exceptions.DecodeError:
         return None
 

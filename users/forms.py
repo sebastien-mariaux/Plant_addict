@@ -38,7 +38,7 @@ class UpdateEmailForm(forms.ModelForm):
         return next_email
 
     def save(self, commit=True):
-        user = super(UpdateEmailForm, self).save()
+        user = super().save()
         UpdateEmailMailer(user).send()
 
     class Meta:

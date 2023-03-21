@@ -33,7 +33,7 @@ class UserMailer:
     def get_context(self) -> dict:
         return {'link': self.email_link(), 'subject': self.subject}
 
-    def email_link(self) -> str:    # pylint: disable=no-self-use
+    def email_link(self) -> str:
         return ""
 
 

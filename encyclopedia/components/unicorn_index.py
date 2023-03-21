@@ -1,12 +1,13 @@
 from django.core.paginator import Paginator
+from django.db.models import QuerySet
 from django_unicorn.components import UnicornView
 
 
 class UnicornIndexView(UnicornView):
     items_per_page = 15
     page_index = 1
-    page = {}
-    items = []
+    page: dict = {}
+    items: QuerySet = []
 
     def hydrate(self):
         self.set_items_list()
@@ -15,11 +16,11 @@ class UnicornIndexView(UnicornView):
         self.set_items_list()
 
     def set_items_list(self):
-        qs = self.get_queryset()
-        if qs.count() == 0:
+        queryset = self.get_queryset()
+        if queryset.count() == 0:
             self.items = []
             return
-        paginator = Paginator(qs, self.items_per_page)
+        paginator = Paginator(queryset, self.items_per_page)
         page = paginator.page(self.page_index)
         self.page = self.serialize_page(page)
         self.items = page.object_list

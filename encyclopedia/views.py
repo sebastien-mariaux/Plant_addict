@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import UpdateView
 
 
 class EditSpecieView(UpdateView):

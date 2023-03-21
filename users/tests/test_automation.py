@@ -3,8 +3,8 @@ from django.shortcuts import reverse
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.common.exceptions import NoSuchElementException
-from .test_data import create_user_jake
 from selenium.webdriver.common.by import By
+from .test_data import create_user_jake
 
 
 class AutomationTest(StaticLiveServerTestCase):

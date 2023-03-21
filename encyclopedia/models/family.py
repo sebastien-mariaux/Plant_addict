@@ -18,8 +18,8 @@ class Family(DatedModel):
         null=True, blank=True,
     )
 
-    def __str__(self):
-        return self.name
+    def __str__(self) -> str:
+        return str(self.name)
 
     class Meta:
         verbose_name = _('family')

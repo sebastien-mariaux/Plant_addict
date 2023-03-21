@@ -24,7 +24,7 @@ class RegisterView(generic.CreateView):
 
 
 class EmailValidationView(generic.View):
-    def get(self, request, validation_token):   # pylint: disable=R0201
+    def get(self, request, validation_token):
         if user := user_from_token(validation_token):
             user.validate()
             return render(request, 'users/email_confirmed.html', {'user': user})
@@ -75,7 +75,7 @@ class UpdateEmailView(LoginRequiredMixin, generic.UpdateView):
 
 
 class NewEmailValidationView(generic.View):
-    def get(self, request, validation_token):  # pylint: disable=R0201
+    def get(self, request, validation_token):
         if user := user_from_token(validation_token):
             try:
                 user.replace_email()
@@ -106,7 +106,7 @@ class ChangePasswordView(LoginRequiredMixin, auth_views.PasswordChangeView):
 
     def form_valid(self, form):
         self.success_messages()
-        return super(ChangePasswordView, self).form_valid(form)
+        return super().form_valid(form)
 
     def success_messages(self) -> None:
         messages.add_message(
@@ -121,7 +121,7 @@ class ResetPasswordView(auth_views.PasswordResetView):
 
     def form_valid(self, form):
         self.success_messages()
-        return super(ResetPasswordView, self).form_valid(form)
+        return super().form_valid(form)
 
     def success_messages(self) -> None:
         messages.add_message(
@@ -136,7 +136,7 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
 
     def form_valid(self, form):
         self.success_messages()
-        return super(PasswordResetConfirmView, self).form_valid(form)
+        return super().form_valid(form)
 
     def success_messages(self) -> None:
         messages.add_message(
