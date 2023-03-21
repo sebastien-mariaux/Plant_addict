@@ -1,0 +1,8 @@
+{% extends 'simple.html' %}
+{% load i18n unicorn  %}
+
+{% block title %}{% trans 'List of Families' %}{% endblock %}
+
+{% block content %}
+  {% unicorn 'families_index' %}
+{% endblock %}

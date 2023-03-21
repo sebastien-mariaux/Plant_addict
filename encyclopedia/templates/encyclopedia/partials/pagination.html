@@ -1,0 +1,14 @@
+<div class="pagination">
+  <span class="step-links">
+    {% if page.has_previous %}
+    <button unicorn:click="go_to_page(1)">{{"<<<"}}</button>
+    <button unicorn:click="go_to_page({{page.previous_page_number}})">{{'<'}}</button>
+    {% endif %}
+    <span class="current">Page {{ page.number }} of {{ page.num_pages }}</span>
+
+    {% if page.has_next %}
+    <button unicorn:click="go_to_page({{page.next_page_number}})">{{'>'}}</button>
+    <button unicorn:click="go_to_page({{page.num_pages}})">{{'>>>'}}</button>
+    {% endif %}
+  </span>
+</div>

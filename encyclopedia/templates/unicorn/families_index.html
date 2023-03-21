@@ -1,0 +1,20 @@
+{% load i18n %}
+<div>
+    <h1> {% trans 'List of families' %}</h1>
+    <div class='filters'>
+        <input type="text" placeholder="genus' name" unicorn:model="genus_name">
+        <input type="text" placeholder="family's name" unicorn:model="family_name">
+        <button unicorn:click="reset">Reset</button>
+    </div>
+    {% if items %}
+    <div class='cards'>
+        {% for family in items %}
+        {% include 'partials/family.html' with family=family %}
+        {% endfor %}
+    </div>
+    {% include 'partials/pagination.html' %}
+    {% else %}
+    <div>Nothing to display...</div>
+
+    {% endif %}
+</div>

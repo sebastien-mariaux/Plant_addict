@@ -1,20 +1,18 @@
 {% load i18n %}
 <div>
-  <h1> {% trans 'List of species' %}</h1>
+  <h1> {% trans 'List of genuses' %}</h1>
   <div class='filters'>
-    <input type="text" placeholder="specie's name" unicorn:model="specie_name">
-    <input type="text" placeholder="genuses' name" unicorn:model="genus_name">
+    <input type="text" placeholder="genus' name" unicorn:model="genus_name">
     <input type="text" placeholder="family's name" unicorn:model="family_name">
     <button unicorn:click="reset">Reset</button>
   </div>
   {% if items %}
   <div class='cards'>
-    {% for item in items %}
-    {% include 'partials/specie.html' with specie=item %}
+    {% for genus in items %}
+    {% include 'partials/genus.html' with genus=genus %}
     {% endfor %}
   </div>
   {% include 'partials/pagination.html' %}
-
   {% else %}
   <div>Nothing to display...</div>
 
