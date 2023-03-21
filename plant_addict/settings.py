@@ -18,7 +18,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -59,7 +58,7 @@ LOGIN_URL = '/account/login'
 
 AUTHENTICATION_BACKENDS = (
     'users.backends.CustomBackend',
-    )
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

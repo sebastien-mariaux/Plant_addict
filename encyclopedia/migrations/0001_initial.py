@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Branch',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
@@ -29,7 +30,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Family',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
@@ -43,11 +45,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Genus',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
-                ('family', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='encyclopedia.family', verbose_name='family')),
+                ('family', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                 to='encyclopedia.family', verbose_name='family')),
             ],
             options={
                 'verbose_name': 'genus',
@@ -58,11 +62,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PlantClass',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
-                ('branch', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='encyclopedia.branch', verbose_name='branch')),
+                ('branch', models.ForeignKey(blank=True, null=True,
+                 on_delete=django.db.models.deletion.CASCADE, to='encyclopedia.branch', verbose_name='branch')),
             ],
             options={
                 'verbose_name': 'class',
@@ -73,13 +79,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Specie',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='scientific name')),
                 ('source_id', models.CharField(max_length=15, verbose_name='source id')),
-                ('source_reference', models.CharField(blank=True, max_length=255, null=True, verbose_name='source reference')),
-                ('genus', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='encyclopedia.genus', verbose_name='genus')),
+                ('source_reference', models.CharField(blank=True,
+                 max_length=255, null=True, verbose_name='source reference')),
+                ('genus', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                 to='encyclopedia.genus', verbose_name='genus')),
             ],
             options={
                 'verbose_name': 'specie',
@@ -90,11 +99,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PlantOrder',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
                 ('name', models.CharField(max_length=255, unique=True, verbose_name='name')),
-                ('plant_class', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='encyclopedia.plantclass', verbose_name='class')),
+                ('plant_class', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                 to='encyclopedia.plantclass', verbose_name='class')),
             ],
             options={
                 'verbose_name': 'order',
@@ -105,6 +116,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='family',
             name='plant_order',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='encyclopedia.plantorder', verbose_name='order'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                    to='encyclopedia.plantorder', verbose_name='order'),
         ),
     ]

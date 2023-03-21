@@ -16,4 +16,3 @@ class FamiliesIndexView(UnicornIndexView):
         self.genus_name = ''
         self.family_name = ''
         super().reset()
-

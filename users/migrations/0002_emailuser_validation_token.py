@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='emailuser',
             name='validation_token',
-            field=models.CharField(blank=True, max_length=255, null=True, verbose_name='validation token'),
+            field=models.CharField(blank=True, max_length=255, null=True,
+                                   verbose_name='validation token'),
         ),
     ]

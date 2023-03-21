@@ -19,7 +19,7 @@ class Genus(DatedModel):
     )
 
     def __str__(self):
-            return self.name
+        return self.name
 
     class Meta:
         verbose_name = _('genus')
