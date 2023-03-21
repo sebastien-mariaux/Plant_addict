@@ -4,3 +4,4 @@
 /tmp/*
 
 classification.csv
+/db.sqlite3-journal

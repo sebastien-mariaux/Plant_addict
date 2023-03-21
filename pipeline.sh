@@ -1,14 +1,18 @@
+
 echo 'RUN PYCODESTYLE...'
-pycodestyle startup_simulator
+pycodestyle plant_addict
 pycodestyle users
+pycodestyle encyclopedia
 
 
 echo 'RUN MYPY...'
-mypy --config-file tox.ini startup_simulator
+mypy --config-file tox.ini plant_addict
 mypy --config-file tox.ini users
+mypy --config-file tox.ini encyclopedia
 
 
 echo 'RUN PYLINT...'
+pylint -j0 plant_addict
 pylint -j0 users
-pylint -j0 startup_simulator
+pylint -j0 encyclopedia
 

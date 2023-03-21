@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.http import HttpResponse
 from django.shortcuts import reverse
-from startup_simulator.test_helpers import TestHelpers
+from plant_addict.test_helpers import TestHelpers
 from .test_data import create_user_amy, create_user_jake, create_inactive_user
 
 UserModel = get_user_model()
