@@ -1,9 +1,18 @@
 
-{% load i18n %}
+{% load i18n static %}
+
+
 
 <div class="card">
   <div class='card-header'>
-    {{ family.name }}
+    <img src="{% static 'images/plants/placeholder2.png' %}" alt="My image" width='80' />
+    <div class='card-header-content'>
+      <div>{{ family.name }}</div>
+      <div class="card-subheader">
+        <div><span class='card-label'>{% trans 'Created:' %} </span> {{ genus.created_at|date:'Y-m-d H:i' }}</div>
+        <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ genus.updated_at|date:'Y-m-d H:i' }}</div>
+      </div>
+    </div>
   </div>
   <div class="card-subheader">
     <div><span class='card-label'>{% trans 'Created:' %} </span> {{ family.created_at|date:'Y-m-d H:i' }}</div>

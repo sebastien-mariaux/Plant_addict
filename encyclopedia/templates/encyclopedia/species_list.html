@@ -1,0 +1,8 @@
+{% extends 'simple.html' %}
+{% load i18n unicorn  %}
+
+{% block title %}{% trans 'List of species' %}{% endblock %}
+
+{% block content %}
+  {% unicorn 'species_index' %}
+{% endblock %}
