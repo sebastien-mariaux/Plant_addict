@@ -13,16 +13,28 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='family',
             name='cover_picture',
-            field=models.ImageField(blank=True, null=True, upload_to='media/images/families/cover_pictures', verbose_name='cover picture'),
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to='media/images/families/cover_pictures',
+                verbose_name='cover picture'),
         ),
         migrations.AddField(
             model_name='genus',
             name='cover_picture',
-            field=models.ImageField(blank=True, null=True, upload_to='media/images/genuses/cover_pictures', verbose_name='cover picture'),
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to='media/images/genuses/cover_pictures',
+                verbose_name='cover picture'),
         ),
         migrations.AddField(
             model_name='specie',
             name='cover_picture',
-            field=models.ImageField(blank=True, null=True, upload_to='media/images/species/cover_pictures', verbose_name='cover picture'),
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to='media/images/species/cover_pictures',
+                verbose_name='cover picture'),
         ),
     ]
