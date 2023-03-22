@@ -24,10 +24,10 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        sys.stdout.write('Populating encyclopedia database...\n')
         if options['delete']:
             delete_data()
         handle_file(options['source'])
+        sys.stdout.write('Populating encyclopedia database...\n')
 
 
 def handle_file(file: str):
@@ -46,6 +46,7 @@ def write_to_database(file: str):
         for index, row in enumerate(csv_reader):
             handle_row(index, row, header_index)
 
+
 def handle_row(index: int, row: list, header_index: dict):
     if row[header_index['verbatimTaxonRank']] != 'species':
         return
@@ -60,18 +61,22 @@ def handle_row(index: int, row: list, header_index: dict):
 
     family = Family.objects.get_or_create(name=family_name)[0]
 
-    # classification error in datasource
-    if genus_name in correction_mapping:
-        family = Family.objects.get_or_create(name=correction_mapping[genus_name])[0]
+    # # classification error in datasource
+    # if genus_name in correction_mapping:
+    #     family = Family.objects.get_or_create(name=correction_mapping[genus_name])[0]
 
-    try:
-        genus = Genus.objects.get_or_create(name=genus_name, family=family)[0]
-        # sys.stdout.write(json.dumps(row[header_index['verbatimTaxonRank']]))
-    except IntegrityError:
-        sys.stderr.write(
-            f"Error: {genus_name} specie {specie_name} index {index} family {family_name}\n")
-        return
+    genus = Genus.objects.filter(name=genus_name).first()
+    if not genus:
+        genus = Genus.objects.create(name=genus_name, family=family)
+    # try:
+    #     genus = Genus.objects.get_or_create(name=genus_name, family=family)[0]
+    #     # sys.stdout.write(json.dumps(row[header_index['verbatimTaxonRank']]))
+    # except IntegrityError:
+    #     sys.stderr.write(
+    #         f"Error: {genus_name} specie {specie_name} index {index} family {family_name}\n")
+    #     return
 
+    sys.stdout.write(f"Creating specie {specie_name} index {index}...\n")
     Specie.objects.create(name=specie_name, genus=genus)
 
 
@@ -85,21 +90,23 @@ def delete_data():
     Branch.objects.all().delete()
 
 
-correction_mapping = {
-    'Bigelowia': 'Asteraceae',
-    'Tithonia': 'Asteraceae',
-    'Centaurium': 'Gentianaceae',
-    'Layia': 'Asteraceae',
-    'Bulbostylis': 'Cyperaceae',
-    'Acosta': 'Hypnaceae',
-    'Saussurea': 'Asteraceae',
-    'Eriocoma': 'Poaceae',
-    'Heterotrichum': 'Melastomataceae',
-    # 'Trichophyllum': '????',
-    # 'Hymenolepis': '????',
-    'Chabraea': 'Asteraceae',
-    # 'Meridiana': '????',
-    # 'Theodorea': '????',
-    # 'Wirtgenia': '????',
+# correction_mapping = {
+#     'Bigelowia': 'Asteraceae',
+#     'Tithonia': 'Asteraceae',
+#     'Centaurium': 'Gentianaceae',
+#     'Layia': 'Asteraceae',
+#     'Bulbostylis': 'Cyperaceae',
+#     'Acosta': 'Hypnaceae',
+#     'Saussurea': 'Asteraceae',
+#     'Eriocoma': 'Poaceae',
+#     'Heterotrichum': 'Melastomataceae',
+#     # 'Trichophyllum': '????',
+#     # 'Hymenolepis': '????',
+#     'Chabraea': 'Asteraceae',
+#     # 'Meridiana': '????',
+#     # 'Theodorea': '????',
+#     # 'Wirtgenia': '????',
+#     'Aspidum': 'Dryopteridaceae',
+#     'Acrophorus': 'Dryopteridaceae',
 
-}
+# }
