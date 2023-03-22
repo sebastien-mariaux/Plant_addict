@@ -2,7 +2,11 @@
 
 <div class="card">
   <div class='card-header'>
+    {% if specie.cover_picture %}
+    <img src="{{specie.cover_picture.url}}" alt="My image" width='80' />
+    {% else %}
     <img src="{% static 'images/plants/placeholder.png' %}" alt="My image" width='80' />
+    {% endif %}
     <div class='card-header-content'>
       <div>{{ specie.name }}</div>
       <div class="card-subheader">

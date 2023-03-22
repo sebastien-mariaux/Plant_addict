@@ -18,6 +18,12 @@ class Family(DatedModel):
         null=True, blank=True,
     )
 
+    cover_picture = models.ImageField(
+        upload_to='media/images/families/cover_pictures',
+        verbose_name=_('cover picture'),
+        null=True, blank=True,
+    )
+
     def __str__(self) -> str:
         return str(self.name)
 

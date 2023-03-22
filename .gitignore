@@ -6,3 +6,4 @@
 classification.csv
 /db.sqlite3-journal
 /geckodriver.log
+/media/*

@@ -8,7 +8,7 @@ class SpeciesIndexView(UnicornIndexView):
     family_name = ''
 
     def get_queryset(self):
-        queryset = Specie.objects.all()
+        queryset = Specie.objects.select_related('genus', 'genus__family').all()
         if self.specie_name:
             queryset = queryset.filter(name__startswith=self.specie_name)
         if self.genus_name:

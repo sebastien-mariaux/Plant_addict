@@ -18,6 +18,12 @@ class Genus(DatedModel):
         null=False, blank=False,
     )
 
+    cover_picture = models.ImageField(
+        upload_to='media/images/genuses/cover_pictures',
+        verbose_name=_('cover picture'),
+        null=True, blank=True,
+    )
+
     def __str__(self):
         return str(self.name)
 
