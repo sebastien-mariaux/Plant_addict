@@ -38,14 +38,13 @@ def handle_file(file: str):
 
 
 def write_to_database(file: str):
+
     with open(file, encoding='latin-1') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter='\t')
         header = next(csv_reader)
         header_index = {header[i]: i for i in range(len(header))}
-        sys.stdout.write(json.dumps(header_index))
         for index, row in enumerate(csv_reader):
             handle_row(index, row, header_index)
-
 
 def handle_row(index: int, row: list, header_index: dict):
     if row[header_index['verbatimTaxonRank']] != 'species':

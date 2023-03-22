@@ -8,6 +8,9 @@
       <div class="card-subheader">
         <div><span class='card-label'>{% trans 'Created:' %} </span> {{ specie.created_at|date:'Y-m-d H:i' }}</div>
         <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ specie.updated_at|date:'Y-m-d H:i' }}</div>
+        <div class='card-buttons'>
+          <a href="{% url 'edit_specie' specie.id %}">{% trans 'Edit' %}</a>
+        </div>
       </div>
     </div>
   </div>
