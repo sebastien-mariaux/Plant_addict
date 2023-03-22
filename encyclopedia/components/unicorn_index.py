@@ -5,10 +5,13 @@ from django_unicorn.components import UnicornView, QuerySetType
 class UnicornIndexView(UnicornView):
     items_per_page = 15
     page_index = 1
-    page = {}
-    items = []
+    page: dict = {}
+    items = []  # type: ignore
 
-    def hydrate(self):
+    # def hydrate(self):
+    #     self.set_items_list()
+
+    def search(self):
         self.set_items_list()
 
     def mount(self):

@@ -3,6 +3,7 @@
     <h1> {% trans 'List of families' %}</h1>
     <div class='filters'>
         <input type="text" placeholder="family's name" unicorn:model="family_name">
+        <button unicorn:click="search">Search</button>
         <button unicorn:click="reset">Reset</button>
     </div>
     {% if items %}
