@@ -11,13 +11,13 @@
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
 
-  <div class="fieldWrapper">
+  <div class="field-wrapper">
     {{ form.name.errors }}
     <label for="{{ form.name.id_for_label }}">Scientific name:</label>
     {{ form.name }}
   </div>
 
-  <div class="fieldWrapper">
+  <div class="field-wrapper">
     {{ form.genus.errors }}
     <label for="{{ form.genus.id_for_label }}">Genus:</label>
     {{ form.genus.as_hidden }}
@@ -32,7 +32,7 @@
 
   </div>
 
-  <div class="fieldWrapper">
+  <div class="field-wrapper">
     {{ form.cover_picture.errors }}
     <label for="{{ form.cover_picture.id_for_label }}">Cover picture:</label>
     {{ form.cover_picture }}
