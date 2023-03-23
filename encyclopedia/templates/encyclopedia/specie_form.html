@@ -1,5 +1,5 @@
 {% extends 'simple.html' %}
-{% load i18n %}
+{% load i18n unicorn %}
 
 {% trans 'Edit Specie' %}
 
@@ -10,7 +10,34 @@
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  {{ form.as_p }}
+
+  <div class="fieldWrapper">
+    {{ form.name.errors }}
+    <label for="{{ form.name.id_for_label }}">Scientific name:</label>
+    {{ form.name }}
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.genus.errors }}
+    <label for="{{ form.genus.id_for_label }}">Genus:</label>
+    {{ form.genus.as_hidden }}
+
+    <div data-controller='ajax-select' data-ajax-select-url-value="{% url 'genus_search'  %}"
+      data-ajax-select-name-value="genus" data-ajax-select-id-value="id_genus"
+      data-ajax-select-current-value="{{ specie.genus.name }}"
+      class='ajax-select'>
+      <input type="text" value="{{ specie.genus.name }}" data-ajax-select-target='input' />
+      <div data-ajax-select-target='results' class='results hidden'></div>
+    </div>
+
+  </div>
+
+  <div class="fieldWrapper">
+    {{ form.cover_picture.errors }}
+    <label for="{{ form.cover_picture.id_for_label }}">Cover picture:</label>
+    {{ form.cover_picture }}
+  </div>
+
   <input type="submit" value="Update">
 
 </form>

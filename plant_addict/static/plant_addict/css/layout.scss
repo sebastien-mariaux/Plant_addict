@@ -32,3 +32,19 @@
   }
 }
 
+.ajax-select {
+  .results {
+    max-height: 250px;
+    background-color: #ededed;
+    width: fit-content;
+    min-width: 250px;
+    padding: 0.2em;
+    overflow: scroll;
+    position: absolute;
+
+    option:hover {
+      background-color: green;
+      color: white;
+    }
+  }
+}

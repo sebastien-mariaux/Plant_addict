@@ -27,10 +27,10 @@ class Command(BaseCommand):
         if options['delete']:
             delete_data()
         handle_file(options['source'])
-        sys.stdout.write('Populating encyclopedia database...\n')
 
 
 def handle_file(file: str):
+    sys.stdout.write('Populating encyclopedia database...\n')
     if os.path.isfile(file):
         write_to_database(file)
     else:
@@ -58,6 +58,7 @@ def handle_row(index: int, row: list, header_index: dict):
 
     if Specie.objects.filter(name=specie_name).first():
         return
+
 
     family = Family.objects.get_or_create(name=family_name)[0]
 
