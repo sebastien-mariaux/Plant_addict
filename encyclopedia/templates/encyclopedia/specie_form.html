@@ -24,18 +24,22 @@
 
     <div data-controller='ajax-select' data-ajax-select-url-value="{% url 'genus_search'  %}"
       data-ajax-select-name-value="genus" data-ajax-select-id-value="id_genus"
-      data-ajax-select-current-value="{{ specie.genus.name }}"
-      class='ajax-select'>
+      data-ajax-select-current-value="{{ specie.genus.name }}" class='ajax-select'>
       <input type="text" value="{{ specie.genus.name }}" data-ajax-select-target='input' />
       <div data-ajax-select-target='results' class='results hidden'></div>
     </div>
 
   </div>
 
-  <div class="field-wrapper">
+  <div class="field-wrapper" data-controller='file-select'>
     {{ form.cover_picture.errors }}
     <label for="{{ form.cover_picture.id_for_label }}">Cover picture:</label>
-    {{ form.cover_picture }}
+    <img src="{{ specie.cover_picture.url }}" alt="Cover picture" width="100" data-file-select-target='display'
+      style="margin-bottom: 0.2em"/>
+
+      <input type="file" name="cover_picture" id="id_cover_picture" data-action="file-select#loadImage"
+      accept="image/*" style="display: none;" />
+      <input type="button" value="{% trans 'Select file' %}" onclick="document.getElementById('id_cover_picture').click();" class='button-input' />
   </div>
 
   <input type="submit" value="Update">
