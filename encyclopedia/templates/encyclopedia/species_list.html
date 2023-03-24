@@ -4,5 +4,29 @@
 {% block title %}{% trans 'List of species' %}{% endblock %}
 
 {% block content %}
-  {% unicorn 'species_index' %}
+<div>
+  <h1>{% trans "List of species" %}</h1>
+  <div class='filters'>
+    <form method="get" action="{% url 'species_list' %}">
+      <input type="text" placeholder="specie's name" name="search_specie" value="{{search_specie}}" />
+      <input type="text" placeholder="genuses' name" name="search_genus" value="{{search_genus}}" />
+      <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
+      <input type="submit" name="submit" value="submit" />
+      <a href="{% url 'species_list' %}">Reset</a>
+    </form>
+
+  </div>
+  {% if species %}
+  <div class='cards'>
+    {% for specie in species %}
+    {% include 'partials/specie.html' with specie=specie %}
+    {% endfor %}
+  </div>
+  {% include 'partials/pagination.html' %}
+
+  {% else %}
+  <div>Nothing to display...</div>
+
+  {% endif %}
+</div>
 {% endblock %}

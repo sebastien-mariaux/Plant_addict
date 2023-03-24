@@ -6,6 +6,7 @@ export default class FileSelectController extends Controller {
 
   loadImage(event) {
     this.displayTarget.src = URL.createObjectURL(event.target.files[0])
+    this.displayTarget.classList.remove("hidden")
   }
 
 }

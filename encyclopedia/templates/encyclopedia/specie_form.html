@@ -34,8 +34,17 @@
   <div class="field-wrapper" data-controller='file-select'>
     {{ form.cover_picture.errors }}
     <label for="{{ form.cover_picture.id_for_label }}">Cover picture:</label>
+
+    {% if specie.cover_picture %}
     <img src="{{ specie.cover_picture.url }}" alt="Cover picture" width="100" data-file-select-target='display'
       style="margin-bottom: 0.2em"/>
+      {% else %}
+      <img src="" class='hidden' alt="Cover picture" width="100" data-file-select-target='display'
+      style="margin-bottom: 0.2em"/>
+      {% endif %}
+
+
+
 
       <input type="file" name="cover_picture" id="id_cover_picture" data-action="file-select#loadImage"
       accept="image/*" style="display: none;" />

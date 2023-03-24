@@ -1,14 +1,19 @@
+{% load i18n pagination %}
+
 <div class="pagination">
   <span class="step-links">
-    {% if page.has_previous %}
-    <button unicorn:click="go_to_page(1)">{{"<<<"}}</button>
-    <button unicorn:click="go_to_page({{page.previous_page_number}})">{{'<'}}</button>
+    {% if page_obj.has_previous %}
+    <a href="?{% param_replace page=1 %}">&laquo; {% trans "first" %}</a>
+    <a href="?{% param_replace page=page_obj.previous_page_number %}">{% trans "previous" %}</a>
     {% endif %}
-    <span class="current">Page {{ page.number }} of {{ page.num_pages }}</span>
 
-    {% if page.has_next %}
-    <button unicorn:click="go_to_page({{page.next_page_number}})">{{'>'}}</button>
-    <button unicorn:click="go_to_page({{page.num_pages}})">{{'>>>'}}</button>
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?{% param_replace page=page_obj.next_page_number %}">{% trans "next" %}</a>
+    <a href="?{% param_replace page=page_obj.paginator.num_pages %}">{% trans "last" %} &raquo;</a>
     {% endif %}
   </span>
 </div>
