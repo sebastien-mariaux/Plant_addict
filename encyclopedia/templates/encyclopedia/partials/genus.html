@@ -1,15 +1,23 @@
-
 {% load i18n static %}
 
 
 <div class="card">
   <div class='card-header'>
+
+    {% if genus.cover_picture %}
+    <img src="{{genus.cover_picture.url}}" alt="My image" width='80' />
+    {% else %}
     <img src="{% static 'images/plants/placeholder1.png' %}" alt="My image" width='80' />
+    {% endif %}
+
     <div class='card-header-content'>
       <div>{{ genus.name }}</div>
       <div class="card-subheader">
         <div><span class='card-label'>{% trans 'Created:' %} </span> {{ genus.created_at|date:'Y-m-d H:i' }}</div>
         <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ genus.updated_at|date:'Y-m-d H:i' }}</div>
+        <div class='card-buttons'>
+          <a href="{% url 'edit_genus' genus.id %}">{% trans 'Edit' %}</a>
+        </div>
       </div>
     </div>
   </div>

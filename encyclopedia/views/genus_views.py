@@ -1,6 +1,9 @@
-from django.views.generic import ListView, View
+from urllib.parse import urlencode
+from django.urls import reverse
+from django.views.generic import ListView, View, CreateView, UpdateView, DetailView
 from django.http import JsonResponse
 from encyclopedia.models import Genus
+from encyclopedia.forms import GenusForm
 
 
 class GenusListView(ListView):
@@ -36,3 +39,19 @@ class GenusSearchView(View):
     def get_genus_data(self, query):
         genuses = Genus.objects.filter(name__startswith=query).all()
         return list(genuses.values('pk', 'name')[0:25])
+
+
+class GenusCreateView(CreateView):
+    model = Genus
+    form_class = GenusForm
+
+    def get_success_url(self):
+        return reverse('genuses_list') + '?' + urlencode({'search_genus': self.object.name})
+
+
+class GenusUpdateView(UpdateView):
+    model = Genus
+    form_class = GenusForm
+
+    def get_success_url(self):
+        return reverse('genuses_list') + '?' + urlencode({'search_genus': self.object.name})

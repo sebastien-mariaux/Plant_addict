@@ -5,7 +5,11 @@
 
 <div class="card">
   <div class='card-header'>
+    {% if family.cover_picture %}
+    <img src="{{family.cover_picture.url}}" alt="My image" width='80' />
+    {% else %}
     <img src="{% static 'images/plants/placeholder2.png' %}" alt="My image" width='80' />
+    {% endif %}
     <div class='card-header-content'>
       <div>{{ family.name }}</div>
       <div class="card-subheader">

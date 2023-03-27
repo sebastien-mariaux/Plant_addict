@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.views.generic import ListView, UpdateView, DetailView
+from django.views.generic import ListView, UpdateView, DetailView, CreateView
 from encyclopedia.models import Specie
 from encyclopedia.forms import SpecieForm
 
@@ -34,14 +34,21 @@ class SpecieListView(ListView):
 
 class SpecieUpdateView(UpdateView):
     model = Specie
-
     form_class = SpecieForm
 
     def get_success_url(self):
-        return reverse('species_list')
+        return reverse('specie_detail', kwargs={'pk': self.object.pk})
 
 
 class SpecieDetailView(DetailView):
     model = Specie
     template_name = 'specie_detail.html'
     context_object_name = 'specie'
+
+
+class SpecieCreateView(CreateView):
+    model = Specie
+    form_class = SpecieForm
+
+    def get_success_url(self):
+        return reverse('specie_detail', kwargs={'pk': self.object.pk})

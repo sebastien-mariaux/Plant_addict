@@ -42,7 +42,7 @@ export default class ajaxSelectController extends Controller {
       }).join('')
       Array.from(document.getElementsByClassName(className)).forEach((element) => {
         element.addEventListener('click', (event) => {
-          this.selectGenus(event)
+          this.selectParent(event)
         })
       })
     } else {
@@ -50,8 +50,7 @@ export default class ajaxSelectController extends Controller {
     }
   }
 
-  selectGenus(event) {
-    console.log('selectGenus')
+  selectParent(event) {
     const pk = event.target.value
     const name = event.target.innerHTML
     this.inputTarget.value = name

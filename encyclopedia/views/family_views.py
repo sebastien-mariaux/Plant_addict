@@ -1,4 +1,5 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, View
+from django.http import JsonResponse
 from encyclopedia.models import Family
 
 
@@ -20,3 +21,13 @@ class FamilyListView(ListView):
         context = super().get_context_data(**kwargs)
         context['search_family'] = self.request.GET.get('search_family') or ''
         return context
+
+class FamilySearchView(View):
+    def get(self, request):
+        query = request.GET.get('query')
+        families = self.get_genus_data(query)
+        return JsonResponse({'results': families})
+
+    def get_genus_data(self, query):
+        families = Family.objects.filter(name__startswith=query).all()
+        return list(families.values('pk', 'name')[0:25])
