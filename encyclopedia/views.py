@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.generic import UpdateView, View, ListView
-from encyclopedia.models import Specie, Genus
+from encyclopedia.models import Specie, Genus, Family
 from encyclopedia.forms import SpecieForm
 
 
@@ -54,7 +54,7 @@ class SpecieListView(ListView):
 
 class GenusListView(ListView):
     model = Genus
-    template_name = 'genuses_list.html'
+    template_name = 'families_list.html'
     paginate_by = 15
     context_object_name = 'genuses'
 
@@ -72,5 +72,24 @@ class GenusListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['search_genus'] = self.request.GET.get('search_genus') or ''
+        context['search_family'] = self.request.GET.get('search_family') or ''
+        return context
+
+class FamilyListView(ListView):
+    model = Family
+    template_name = 'families_list.html'
+    paginate_by = 15
+    context_object_name = 'families'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_family = self.request.GET.get('search_family')
+        if search_family:
+            queryset = queryset.filter(name__startswith=search_family)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['search_family'] = self.request.GET.get('search_family') or ''
         return context

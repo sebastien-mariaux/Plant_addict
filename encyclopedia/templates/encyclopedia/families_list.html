@@ -4,5 +4,25 @@
 {% block title %}{% trans 'List of Families' %}{% endblock %}
 
 {% block content %}
-  {% unicorn 'families_index' %}
+<div>
+  <h1> {% trans 'List of families' %}</h1>
+  <div class='filters'>
+    <form method="get" action="{% url 'families_list' %}">
+      <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
+      <input type="submit" name="submit" value="{% trans 'search' %}" />
+      <a href="{% url 'families_list' %}">Reset</a>
+    </form>
+  </div>
+  {% if families %}
+  <div class='cards'>
+    {% for family in families %}
+    {% include 'partials/family.html' with family=family %}
+    {% endfor %}
+  </div>
+  {% include 'partials/pagination.html' %}
+  {% else %}
+  <div>Nothing to display...</div>
+
+  {% endif %}
+</div>
 {% endblock %}
