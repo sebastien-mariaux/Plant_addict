@@ -1,0 +1,13 @@
+.detail-and-image {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .right {
+    margin-left: 1em;
+  }
+
+  .label {
+    font-weight: bold;
+  }
+}

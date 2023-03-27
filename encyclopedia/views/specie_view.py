@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DetailView
 from encyclopedia.models import Specie
 from encyclopedia.forms import SpecieForm
 
@@ -41,3 +41,7 @@ class SpecieUpdateView(UpdateView):
         return reverse('species_list')
 
 
+class SpecieDetailView(DetailView):
+    model = Specie
+    template_name = 'specie_detail.html'
+    context_object_name = 'specie'

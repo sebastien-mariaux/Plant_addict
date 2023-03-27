@@ -1,0 +1,33 @@
+{% extends 'simple.html' %}
+{% load sass_tags i18n %}
+
+{% block extra_head %}
+{{ block.super }}
+<link href="{% sass_src 'css/detail.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<h1>{{specie.name}}</h1>
+
+<div class='detail-and-image'>
+  <div>
+    {% if specie.cover_picture %}
+    <img src="{{ specie.cover_picture.url }}" alt="Cover picture" width="250" data-file-select-target='display'
+      style="margin-bottom: 0.2em" />
+    {% endif %}
+  </div>
+  <div class='right'>
+    <div>
+      <span class='label'>{% trans 'Genus:' %}</span>
+      <span>{{specie.genus}}</span>
+    </div>
+    {% if specie.source_reference %}
+    <div>
+      <span class='label'>{% trans 'Source:' %}</span>
+      <span><a href="{{specie.source_reference}}">{{specie.source_reference}}</a></span>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

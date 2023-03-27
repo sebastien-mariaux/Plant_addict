@@ -42,6 +42,7 @@ def write_to_database(file: str):
     with open(file, encoding='latin-1') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter='\t')
         header = next(csv_reader)
+        print(header)
         header_index = {header[i]: i for i in range(len(header))}
         for index, row in enumerate(csv_reader):
             handle_row(index, row, header_index)
@@ -58,7 +59,6 @@ def handle_row(index: int, row: list, header_index: dict):
 
     if Specie.objects.filter(name=specie_name).first():
         return
-
 
     family = Family.objects.get_or_create(name=family_name)[0]
 
@@ -78,7 +78,8 @@ def handle_row(index: int, row: list, header_index: dict):
     #     return
 
     sys.stdout.write(f"Creating specie {specie_name} index {index}...\n")
-    Specie.objects.create(name=specie_name, genus=genus)
+    Specie.objects.create(name=specie_name, genus=genus,
+                          source_reference=row[header_index['references']], source_id=row[header_index['taxonID']])
 
 
 def delete_data():
