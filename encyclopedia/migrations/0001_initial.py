@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'genus',
-                'verbose_name_plural': 'genii',
+                'verbose_name_plural': 'genuses',
                 'ordering': ['name'],
             },
         ),

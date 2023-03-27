@@ -29,6 +29,6 @@ class Genus(DatedModel):
 
     class Meta:
         verbose_name = _('genus')
-        verbose_name_plural = _('genii')
+        verbose_name_plural = _('genuses')
         ordering = ['name']
         app_label = 'encyclopedia'

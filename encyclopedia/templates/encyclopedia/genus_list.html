@@ -1,0 +1,29 @@
+{% extends 'simple.html' %}
+{% load i18n unicorn  %}
+
+{% block title %}{% trans 'List of Genuses' %}{% endblock %}
+
+{% block content %}
+<div>
+  <h1> {% trans 'List of genuses' %}</h1>
+  <div class='filters'>
+  <form method="get" action="{% url 'genuses_list' %}">
+    <input type="text" placeholder="genuses' name" name="search_genus" value="{{search_genus}}" />
+    <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
+    <input type="submit" name="submit" value="{% trans 'search' %}" />
+    <a href="{% url 'genuses_list' %}">Reset</a>
+    </form>
+  </div>
+  {% if genuses %}
+  <div class='cards'>
+    {% for genus in genuses %}
+    {% include 'partials/genus.html' with genus=genus %}
+    {% endfor %}
+  </div>
+  {% include 'partials/pagination.html' %}
+  {% else %}
+  <div>Nothing to display...</div>
+
+  {% endif %}
+</div>
+{% endblock %}

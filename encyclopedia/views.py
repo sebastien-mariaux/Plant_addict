@@ -50,3 +50,27 @@ class SpecieListView(ListView):
         context['search_genus'] = self.request.GET.get('search_genus') or ''
         context['search_family'] = self.request.GET.get('search_family') or ''
         return context
+
+
+class GenusListView(ListView):
+    model = Genus
+    template_name = 'genuses_list.html'
+    paginate_by = 15
+    context_object_name = 'genuses'
+
+    def get_queryset(self):
+        queryset = super().get_queryset().select_related('family')
+        search_genus = self.request.GET.get('search_genus')
+        search_family = self.request.GET.get('search_family')
+        if search_genus:
+            queryset = queryset.filter(name__startswith=search_genus)
+        if search_family:
+            queryset = queryset.filter(family__name__startswith=search_family)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_genus'] = self.request.GET.get('search_genus') or ''
+        context['search_family'] = self.request.GET.get('search_family') or ''
+        return context

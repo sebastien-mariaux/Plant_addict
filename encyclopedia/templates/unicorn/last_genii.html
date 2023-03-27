@@ -3,13 +3,13 @@
 
 <div>
   <div class='h1-button'>
-    <h1>{% trans 'Last genii' %} <span class='sidenote'>({{genii_count}})</span></h1>
+    <h1>{% trans 'Last genuses' %} <span class='sidenote'>({{genuses_count}})</span></h1>
     <input type="text" unicorn:model="search" placeholder="Search..." />
     <button unicorn:click="reset">Reset</button>
   </div>
-  {% if genii %}
+  {% if genuses %}
     <div class='cards'>
-      {% for genus in genii %}
+      {% for genus in genuses %}
       {% include 'partials/genus.html' with genus=genus %}
       {% endfor %}
     </div>

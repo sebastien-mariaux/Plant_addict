@@ -2,7 +2,7 @@ from encyclopedia.components.unicorn_index import UnicornIndexView
 from encyclopedia.models import Genus
 
 
-class GeniiIndexView(UnicornIndexView):
+class genusesIndexView(UnicornIndexView):
     genus_name = ''
     family_name = ''
 
