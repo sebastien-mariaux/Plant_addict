@@ -21,6 +21,10 @@
       <span class='label'>{% trans 'Genus:' %}</span>
       <span>{{specie.genus}}</span>
     </div>
+    <div>
+      <span class='label'>{% trans 'Family:' %}</span>
+      <span>{{specie.genus.family}}</span>
+    </div>
     {% if specie.source_reference %}
     <div>
       <span class='label'>{% trans 'Source:' %}</span>
