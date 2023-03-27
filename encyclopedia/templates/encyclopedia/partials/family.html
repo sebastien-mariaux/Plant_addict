@@ -1,4 +1,3 @@
-
 {% load i18n static %}
 
 
@@ -13,17 +12,16 @@
     <div class='card-header-content'>
       <div>{{ family.name }}</div>
       <div class="card-subheader">
-        <div><span class='card-label'>{% trans 'Created:' %} </span> {{ genus.created_at|date:'Y-m-d H:i' }}</div>
-        <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ genus.updated_at|date:'Y-m-d H:i' }}</div>
+        <div><span class='card-label'>{% trans 'Created:' %} </span> {{ family.created_at|date:'Y-m-d H:i' }}</div>
+        <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ family.updated_at|date:'Y-m-d H:i' }}</div>
         <div class='card-buttons'>
-          <a href="{% url 'edit_family' family.id %}">{% trans 'Edit' %}</a>
+          <form action="{% url 'edit_family' family.id %}">
+            <input type="submit" class='bttn-simple bttn-xs bttn-success' value="{% trans 'Edit' %}" >
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <div class="card-subheader">
-    <div><span class='card-label'>{% trans 'Created:' %} </span> {{ family.created_at|date:'Y-m-d H:i' }}</div>
-    <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ family.updated_at|date:'Y-m-d H:i' }}</div>
-  </div>
+
 
 </div>

@@ -9,8 +9,8 @@
   <div class='filters'>
     <form method="get" action="{% url 'families_list' %}">
       <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
-      <input type="submit" name="submit" value="{% trans 'search' %}" />
-      <a href="{% url 'families_list' %}">Reset</a>
+      <input type="submit" name="submit" value="{% trans 'search' %}" class="bttn-simple bttn-sm bttn-success btn-link" />
+      <a href="{% url 'families_list' %}" class="bttn-simple bttn-sm bttn-warning btn-link">Reset</a>
     </form>
   </div>
   {% if families %}

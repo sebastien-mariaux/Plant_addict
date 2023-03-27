@@ -13,8 +13,12 @@
         <div><span class='card-label'>{% trans 'Created:' %} </span> {{ specie.created_at|date:'Y-m-d H:i' }}</div>
         <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ specie.updated_at|date:'Y-m-d H:i' }}</div>
         <div class='card-buttons'>
-          <a href="{% url 'specie_detail' specie.id %}">{% trans 'Detail' %}</a>
-          <a href="{% url 'edit_specie' specie.id %}">{% trans 'Edit' %}</a>
+          <form action="{% url 'specie_detail' specie.id %}">
+            <input type="submit" class='bttn-simple bttn-xs bttn-success ' value="{% trans 'Detail' %}">
+          </form>
+          <form action="{% url 'edit_specie' specie.id %}">
+            <input type="submit" class='bttn-simple bttn-xs bttn-success ' value="{% trans 'Edit' %}">
+          </form>
         </div>
       </div>
     </div>

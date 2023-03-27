@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}
-   {% trans 'Profile' %}
+{% trans 'Profile' %}
 {% endblock title %}
 
 {% block content %}
@@ -10,43 +10,45 @@
   <h1>
     {% trans 'My profile' %}
   </h1>
-    <a class="btn btn-primary" href="{% url 'edit_profile' %}">
-      <i class="fas fa-pen"></i>
-      {% trans 'Edit' %}
-    </a>
+  <a href="{% url 'edit_profile' %}" class='bttn-simple bttn-sm bttn-success  btn-link'>
+   <i class="fa-regular fa-pen-to-square"></i>
+    {% trans 'Edit' %}
+  </a>
 </div>
 
 <h2>{% trans 'User information' %}</h2>
 
+<div>
+  <div>
+    <span class='label'>{% trans 'Username' %}</span>
+    <span class='value'>{{ user.username }}</span>
+  </div>
+  <div>
+    <span class='label'>{% trans 'First name' %}</span>
+    <span class='value'>{{ user.first_name }}</span>
+  </div>
+  <div>
+    <span class='label'>{% trans 'Last name' %}</span>
+    <span class='value'>{{ user.last_name }}</span>
+  </div>
+  <div>
+    <span class='label'>{% trans 'Email' %}</span>
+    <span class='value'>
+      {{ user.email }}
+      <a class='bttn-simple bttn-sm bttn-success btn-link' href="{% url  'update_email' %}"
+        title="{% trans 'update email' %}">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </a>
+    </span>
+  </div>
+</div>
 
-<dl class="row">
-  <dt class="col-sm-3">{% trans 'Username' %} </dt>
-  <dd class="col-sm-9">{{ user.username }}</dd>
-
-  <dt class="col-sm-3">{% trans 'First name' %}</dt>
-  <dd class="col-sm-9">{{ user.first_name }}  </dd>
-
-  <dt class="col-sm-3">{% trans 'Last name' %}</dt>
-  <dd class="col-sm-9">{{ user.last_name }}  </dd>
-
-  <dt class="col-sm-3">{% trans 'Email' %}</dt>
-  <dd class="col-sm-9">
-    {{ user.email }}
-    <a class="ui primary right floated icon button" 
-       href="{% url  'update_email' %}"
-       title="{% trans 'update email' %}" >
-      <i class="fas fa-pen"></i>
-    </a>
-  </dd>
-
-
-</dl>
 
 <h2>{% trans 'Security' %}</h2>
 <p>
-  <a class="btn btn-warning" href="{% url 'change_password' %}">
-      <i class="icon unlock alternate"></i>
-      {% trans 'Change password' %}
+  <a href="{% url 'change_password' %}" class='bttn-simple bttn-sm bttn-danger btn-link'>
+    <i class="fa-solid fa-key"></i>
+    {% trans 'Change password' %}
   </a>
 </p>
 

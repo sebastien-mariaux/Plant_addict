@@ -16,7 +16,9 @@
         <div><span class='card-label'>{% trans 'Created:' %} </span> {{ genus.created_at|date:'Y-m-d H:i' }}</div>
         <div><span class='card-label'>{% trans 'Updated:' %} </span> {{ genus.updated_at|date:'Y-m-d H:i' }}</div>
         <div class='card-buttons'>
-          <a href="{% url 'edit_genus' genus.id %}">{% trans 'Edit' %}</a>
+          <form action="{% url 'edit_genus' genus.id %}">
+            <input type="submit" class='bttn-simple bttn-xs bttn-success' value="{% trans 'Edit' %}">
+          </form>
         </div>
       </div>
     </div>

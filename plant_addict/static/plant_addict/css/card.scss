@@ -21,6 +21,15 @@
     }
   }
 
+  .card-buttons {
+    display: flex;
+    margin-top: 0.2em;
+
+    form {
+      margin-right: 0.2em;
+    }
+  }
+
   .card-subheader {
     font-size: 0.8em;
     color: #666;
