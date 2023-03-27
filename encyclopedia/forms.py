@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from encyclopedia.models import Specie, Genus
+from encyclopedia.models import Specie, Genus, Family
 
 
 class SpecieForm(ModelForm):

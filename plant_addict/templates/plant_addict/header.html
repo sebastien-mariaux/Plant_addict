@@ -23,18 +23,18 @@
       </div>
       <div class='navigation-item'>
         <a class="logout" href="{% url 'logout' %}">
-          {% trans 'logout' %}
+          {% trans 'Logout' %}
         </a>
       </div>
     {% else %}
       <div class='navigation-item'>
         <a class="login" href="{% url 'login' %}">
-          {% trans 'login' %}
+          {% trans 'Login' %}
         </a>
       </div>
       <div class='navigation-item'>
         <a class="register" href="{% url 'register' %}">
-          {% trans 'register' %}
+          {% trans 'Register' %}
         </a>
       </div>
     {% endif %}

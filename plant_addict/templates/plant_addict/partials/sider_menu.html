@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<nav>
+<nav class='sider-menu'>
   <h4>{% trans 'Encyclopedia' %}</h4>
   <div>
     <a href="{% url 'home' %}">
@@ -33,11 +33,13 @@
   </div>
   <div>
     <a href="{% url 'create_genus'  %}">
-    {% trans 'Add genus' %}
+      {% trans 'Add genus' %}
     </a>
   </div>
   <div>
-    {% trans 'Add family' %}
+    <a href="{% url 'create_family'  %}">
+      {% trans 'Add family' %}
+    </a>
   </div>
 
   <hr />

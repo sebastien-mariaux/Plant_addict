@@ -1,4 +1,6 @@
-from django.views.generic import ListView, View
+from urllib.parse import urlencode
+from django.urls import reverse
+from django.views.generic import ListView, View, CreateView, UpdateView
 from django.http import JsonResponse
 from encyclopedia.models import Family
 
@@ -31,3 +33,18 @@ class FamilySearchView(View):
     def get_genus_data(self, query):
         families = Family.objects.filter(name__startswith=query).all()
         return list(families.values('pk', 'name')[0:25])
+
+
+class FamilyCreateView(CreateView):
+    model = Family
+    fields = ['name',  'cover_picture']
+
+    def get_success_url(self):
+        return reverse('families_list') + '?' + urlencode({'search_family': self.object.name})
+
+class FamilyUpdateView(UpdateView):
+    model = Family
+    fields = ['name',  'cover_picture']
+
+    def get_success_url(self):
+        return reverse('families_list') + '?' + urlencode({'search_family': self.object.name})
