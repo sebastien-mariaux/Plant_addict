@@ -4,12 +4,18 @@
   .sider-layout {
     border-right: solid 1px green;
     margin-right: 1em;
-    padding-right: 1em;
+    padding: 0 1em;
     margin-top: 1em;
   }
 
   .content-layout {
     flex: 1;
+  }
+}
+
+.sider-menu {
+  a {
+    text-decoration: none;
   }
 }
 
@@ -49,8 +55,12 @@
   }
 }
 
-.sider-menu {
+
+
+.title-row {
+  display: flex;
+  align-items: center;
   a {
-    text-decoration: none;
+    margin-left: 1em;
   }
 }

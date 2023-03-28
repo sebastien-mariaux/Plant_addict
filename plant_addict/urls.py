@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('encyclopedia.urls')),
     path("unicorn/", include("django_unicorn.urls")),
     path('account/', include('users.urls')),
+    path('collection/', include('collection.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

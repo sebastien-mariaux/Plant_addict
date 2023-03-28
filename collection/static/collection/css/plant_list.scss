@@ -1,0 +1,17 @@
+.empty-collection {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2em;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #eee;
+  color: #666;
+  font-size: 1.2em;
+  font-weight: bold;
+
+
+  .empty-collection-message {
+    margin-bottom: 2em;
+  }
+}

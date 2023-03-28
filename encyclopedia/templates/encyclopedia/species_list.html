@@ -11,8 +11,8 @@
       <input type="text" placeholder="specie's name" name="search_specie" value="{{search_specie}}" />
       <input type="text" placeholder="genuses' name" name="search_genus" value="{{search_genus}}" />
       <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
-      <input type="submit" name="submit" value="{% trans 'search' %}" />
-      <a href="{% url 'species_list' %}">Reset</a>
+      <input type="submit" name="submit" value="{% trans 'search' %}" class="bttn-simple bttn-sm bttn-success btn-link" />
+      <a href="{% url 'species_list' %}" class="bttn-simple bttn-sm bttn-warning btn-link">Reset</a>
     </form>
 
   </div>

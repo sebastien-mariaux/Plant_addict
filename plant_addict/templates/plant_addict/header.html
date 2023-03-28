@@ -2,7 +2,7 @@
 {% load sass_tags %}
 
 {% block extra_head %}
-  <link href="{% sass_src 'header.scss' %}" rel="stylesheet" type="text/css" />
+<link href="{% sass_src 'header.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock extra_head %}
 
 <nav class="navigation">
@@ -16,27 +16,37 @@
 
   <div class="right-menu">
     {% if user.is_authenticated %}
-      <div class='navigation-item'>
-        <a class="profile" href="{% url 'profile' %}">
-          {% trans 'Profile' %}
-        </a>
-      </div>
-      <div class='navigation-item'>
-        <a class="logout" href="{% url 'logout' %}">
-          {% trans 'Logout' %}
-        </a>
-      </div>
+    <div class='navigation-item'>
+      <a class="plants" href="{% url 'plant_list' %}">
+        <i class="fa-brands fa-pagelines"></i>
+        {% trans 'My plants' %}
+      </a>
+    </div>
+    <div class='navigation-item'>
+      <a class="profile" href="{% url 'profile' %}">
+        <i class="fa-solid fa-user"></i>
+        {% trans 'Profile' %}
+      </a>
+    </div>
+    <div class='navigation-item'>
+      <a class="logout" href="{% url 'logout' %}">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        {% trans 'Logout' %}
+      </a>
+    </div>
     {% else %}
-      <div class='navigation-item'>
-        <a class="login" href="{% url 'login' %}">
-          {% trans 'Login' %}
-        </a>
-      </div>
-      <div class='navigation-item'>
-        <a class="register" href="{% url 'register' %}">
-          {% trans 'Register' %}
-        </a>
-      </div>
+    <div class='navigation-item'>
+      <a class="login" href="{% url 'login' %}">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        {% trans 'Login' %}
+      </a>
+    </div>
+    <div class='navigation-item'>
+      <a class="register" href="{% url 'register' %}">
+        <i class="fa-solid fa-user-plus"></i>
+        {% trans 'Register' %}
+      </a>
+    </div>
     {% endif %}
   </div>
 </nav>

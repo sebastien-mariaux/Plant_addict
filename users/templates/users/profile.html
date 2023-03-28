@@ -1,55 +1,61 @@
 {% extends "layouts/simple.html" %}
-{% load i18n %}
+{% load i18n sass_tags %}
 
 {% block title %}
 {% trans 'Profile' %}
 {% endblock title %}
 
+{% block extra_head %}
+  <link href="{% sass_src 'css/profile.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock extra_head %}
+
 {% block content %}
-<div class="title-row">
-  <h1>
-    {% trans 'My profile' %}
-  </h1>
-  <a href="{% url 'edit_profile' %}" class='bttn-simple bttn-sm bttn-success  btn-link'>
-   <i class="fa-regular fa-pen-to-square"></i>
-    {% trans 'Edit' %}
-  </a>
+<div class='profile'>
+  <div class="title-row">
+    <h1>
+      {% trans 'My profile' %}
+    </h1>
+    <a href="{% url 'edit_profile' %}" class='bttn-simple bttn-sm bttn-success  btn-link'>
+      <i class="fa-regular fa-pen-to-square"></i>
+      {% trans 'Edit' %}
+    </a>
+  </div>
+
+  <h2>{% trans 'User information' %}</h2>
+
+  <div>
+    <div>
+      <span class='label'>{% trans 'Username' %}</span>
+      <span class='value'>{{ user.username }}</span>
+    </div>
+    <div>
+      <span class='label'>{% trans 'First name' %}</span>
+      <span class='value'>{{ user.first_name }}</span>
+    </div>
+    <div>
+      <span class='label'>{% trans 'Last name' %}</span>
+      <span class='value'>{{ user.last_name }}</span>
+    </div>
+    <div>
+      <span class='label'>{% trans 'Email' %}</span>
+      <span class='value'>
+        {{ user.email }}
+        <a class='bttn-simple bttn-sm bttn-success btn-link' href="{% url  'update_email' %}"
+          title="{% trans 'update email' %}">
+          <i class="fa-regular fa-pen-to-square"></i>
+        </a>
+      </span>
+    </div>
+  </div>
+
+
+  <h2>{% trans 'Security' %}</h2>
+  <p>
+    <a href="{% url 'change_password' %}" class='bttn-simple bttn-sm bttn-danger btn-link'>
+      <i class="fa-solid fa-key"></i>
+      {% trans 'Change password' %}
+    </a>
+  </p>
 </div>
-
-<h2>{% trans 'User information' %}</h2>
-
-<div>
-  <div>
-    <span class='label'>{% trans 'Username' %}</span>
-    <span class='value'>{{ user.username }}</span>
-  </div>
-  <div>
-    <span class='label'>{% trans 'First name' %}</span>
-    <span class='value'>{{ user.first_name }}</span>
-  </div>
-  <div>
-    <span class='label'>{% trans 'Last name' %}</span>
-    <span class='value'>{{ user.last_name }}</span>
-  </div>
-  <div>
-    <span class='label'>{% trans 'Email' %}</span>
-    <span class='value'>
-      {{ user.email }}
-      <a class='bttn-simple bttn-sm bttn-success btn-link' href="{% url  'update_email' %}"
-        title="{% trans 'update email' %}">
-        <i class="fa-regular fa-pen-to-square"></i>
-      </a>
-    </span>
-  </div>
-</div>
-
-
-<h2>{% trans 'Security' %}</h2>
-<p>
-  <a href="{% url 'change_password' %}" class='bttn-simple bttn-sm bttn-danger btn-link'>
-    <i class="fa-solid fa-key"></i>
-    {% trans 'Change password' %}
-  </a>
-</p>
 
 {% endblock content %}

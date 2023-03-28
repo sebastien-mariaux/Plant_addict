@@ -5,7 +5,7 @@
   <div class='h1-button'>
   <h1>{% trans 'Last families' %} <span class='sidenote'>({{families_count}})</span></h1>
   <input type="text" unicorn:model="search" placeholder="Search..." />
-  <button unicorn:click="reset">Reset</button>
+  <button unicorn:click="reset" class="bttn-simple bttn-sm bttn-warning ">Reset</button>
   </div>
   {% if families %}
   <div class='cards'>

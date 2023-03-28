@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'users',
     'encyclopedia',
+    'collection',
 ]
 
 
@@ -83,6 +84,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, "users", "templates", "users"),
             os.path.join(BASE_DIR, "encyclopedia", "templates", "encyclopedia"),
             os.path.join(BASE_DIR, "encyclopedia", "templates", "unicorn"),
+            os.path.join(BASE_DIR, "collection", "templates", "collection"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -151,7 +153,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "plant_addict", 'static', 'plant_addict'),
     os.path.join(BASE_DIR, "plant_addict", "templates", "plant_addict"),
     os.path.join(BASE_DIR, "users", "templates", "users"),
+    os.path.join(BASE_DIR, "users", "static", "users"),
     os.path.join(BASE_DIR, "encyclopedia", "static", "encyclopedia"),
+    os.path.join(BASE_DIR, "collection", "static", "collection"),
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

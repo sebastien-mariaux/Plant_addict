@@ -7,11 +7,12 @@
 <div>
   <h1> {% trans 'List of genuses' %}</h1>
   <div class='filters'>
-  <form method="get" action="{% url 'genuses_list' %}">
-    <input type="text" placeholder="genuses' name" name="search_genus" value="{{search_genus}}" />
-    <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
-    <input type="submit" name="submit" value="{% trans 'search' %}" />
-    <a href="{% url 'genuses_list' %}">Reset</a>
+    <form method="get" action="{% url 'genuses_list' %}">
+      <input type="text" placeholder="genuses' name" name="search_genus" value="{{search_genus}}" />
+      <input type="text" placeholder="family's name" name="search_family" value="{{search_family}}" />
+      <input type="submit" name="submit" value="{% trans 'search' %}"
+        class="bttn-simple bttn-sm bttn-success btn-link" />
+      <a href="{% url 'genuses_list' %}" class="bttn-simple bttn-sm bttn-warning btn-link">Reset</a>
     </form>
   </div>
   {% if genuses %}

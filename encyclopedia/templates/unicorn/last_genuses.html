@@ -5,7 +5,7 @@
   <div class='h1-button'>
     <h1>{% trans 'Last genuses' %} <span class='sidenote'>({{genuses_count}})</span></h1>
     <input type="text" unicorn:model="search" placeholder="Search..." />
-    <button unicorn:click="reset">Reset</button>
+    <button unicorn:click="reset" class="bttn-simple bttn-sm bttn-warning">Reset</button>
   </div>
   {% if genuses %}
     <div class='cards'>

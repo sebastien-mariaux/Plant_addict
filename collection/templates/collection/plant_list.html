@@ -1,0 +1,45 @@
+{% extends 'simple.html' %}
+{% load i18n %}
+{% load sass_tags %}
+
+{% block title%}
+{% trans 'My collection' %}
+{% endblock %}
+
+{% block extra_head %}
+{{ block.super }}
+<link href="{% sass_src 'css/plant_list.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div>
+  <div class="title-row">
+    <h1> {% trans 'My collection' %}</h1>
+    <a href="" class='bttn-simple bttn-sm bttn-success  btn-link'>
+      <i class="fa-solid fa-leaf"></i>
+      {% trans 'Add a plant' %}
+    </a>
+  </div>
+  {% if plants %}
+  <div class='cards'>
+    {% for plant in plants %}
+    {% include 'partials/plant.html' with plant=plant %}
+    {% endfor %}
+  </div>
+  {% include 'partials/pagination.html' %}
+  {% else %}
+  <div>
+    <div class='empty-collection'>
+      <div class='empty-collection-message'>
+        {% trans "You don't have any plant yet! Start adding plants to your collection." %}
+      </div>
+      <a href="" class='bttn-simple bttn-lg bttn-success  btn-link'>
+        <i class="fa-solid fa-seedling"></i>
+        {% trans 'Start planting!' %}
+      </a>
+    </div>
+  </div>
+
+  {% endif %}
+</div>
+{% endblock %}
